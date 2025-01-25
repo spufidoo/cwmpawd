@@ -1,5 +1,6 @@
 let heading = 0
-basic.forever(function () {
+basic.forever(function on_forever() {
+    
     heading = input.compassHeading()
     if (heading > 315 && heading <= 360 || heading >= 0 && heading <= 45) {
         basic.showString("N")
@@ -10,4 +11,5 @@ basic.forever(function () {
     } else {
         basic.showString("W")
     }
+    
 })

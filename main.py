@@ -1,27 +1,14 @@
-def on_button_pressed_a():
-    global beth
-    beth = "C"
-    basic.show_string("C")
-input.on_button_pressed(Button.A, on_button_pressed_a)
-
-def on_button_pressed_ab():
-    basic.show_icon(IconNames.HEART)
-input.on_button_pressed(Button.AB, on_button_pressed_ab)
-
-def on_button_pressed_b():
-    global beth
-    beth = "T"
-    basic.show_string("T")
-input.on_button_pressed(Button.B, on_button_pressed_b)
-
-beth = ""
+heading = 0
 
 def on_forever():
-    if beth == "C":
-        basic.show_string("" + str(input.compass_heading()))
-    elif beth == "T":
-        basic.show_string("" + str(input.temperature()))
+    global heading
+    heading = input.compass_heading()
+    if heading > 315 and heading <= 360 or heading >= 0 and heading <= 45:
+        basic.show_string("N")
+    elif heading > 45 and heading <= 135:
+        basic.show_string("E")
+    elif heading > 135 and heading <= 225:
+        basic.show_string("S")
     else:
-        basic.show_string("A neu B")
-
+        basic.show_string("W")
 basic.forever(on_forever)
