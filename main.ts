@@ -1,21 +1,13 @@
-let beth = ""
-input.onButtonPressed(Button.A, function () {
-    beth = "C"
-    basic.showString("C")
-})
-input.onButtonPressed(Button.AB, function () {
-    basic.showIcon(IconNames.Heart)
-})
-input.onButtonPressed(Button.B, function () {
-    beth = "T"
-    basic.showString("T")
-})
+let heading = 0
 basic.forever(function () {
-    if (beth == "C") {
-        basic.showString("" + input.compassHeading())
-    } else if (beth == "T") {
-        basic.showString("" + input.temperature())
+    heading = input.compassHeading()
+    if (heading > 315 && heading <= 360 || heading >= 0 && heading <= 45) {
+        basic.showString("N")
+    } else if (heading > 45 && heading <= 135) {
+        basic.showString("E")
+    } else if (heading > 135 && heading <= 225) {
+        basic.showString("S")
     } else {
-        basic.showString("A neu B")
+        basic.showString("W")
     }
 })
